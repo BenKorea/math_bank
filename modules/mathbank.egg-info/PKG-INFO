@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: mathbank
+Version: 0.1.0
+Summary: 중학교 수학문제 자동 변환 및 관리 시스템
+Author: 사용자이름
+Requires-Python: >=3.8
+Requires-Dist: pyyaml
+Dynamic: requires-python

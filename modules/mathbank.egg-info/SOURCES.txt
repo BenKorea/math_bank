@@ -1,0 +1,12 @@
+pyproject.toml
+setup.py
+modules/assisstant/convert_with_assistant.py
+modules/mathbank.egg-info/PKG-INFO
+modules/mathbank.egg-info/SOURCES.txt
+modules/mathbank.egg-info/dependency_links.txt
+modules/mathbank.egg-info/requires.txt
+modules/mathbank.egg-info/top_level.txt
+modules/parsing/__init__.py
+modules/parsing/filename_parser.py
+tests/test_filename_parser.py
+tests/test_logger.py

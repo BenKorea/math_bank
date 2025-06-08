@@ -1,0 +1,96 @@
+---
+title: "R-Python_Template"
+description: "R과 Python을 사용하는 프로젝트 용"
+author: "BenKorea"
+date: "2025-06-07"
+date-modified: last-modified
+---
+
+```{r}
+#| label: setup-logger
+#| include: false
+
+library(futile.logger)
+
+# 환경변수 기반으로 setup 로그 여부 결정
+show_setup_log <- tolower(Sys.getenv("SHOW_SETUP_LOG", unset = "false")) == "true"
+
+flog.threshold(INFO)
+flog.layout(layout.simple)
+
+assign("SHOW_SETUP_LOG", show_setup_log, envir = .GlobalEnv)
+
+if (SHOW_SETUP_LOG) flog.info("🛠️ setup-logger 초기화 완료")
+```
+
+```{r}
+#| label: setup-options
+#| include: false
+
+
+options(
+  scipen = 999
+  #stringsAsFactors = FALSE
+)
+
+if (SHOW_SETUP_LOG) flog.info("⚙️ options 설정 완료")
+```
+
+```{r}
+#| label: setup-packages
+#| include: false
+
+
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(fs, purrr)
+
+if (SHOW_SETUP_LOG) flog.info("📦 패키지 로딩 완료")
+```
+
+```{r}
+#| label: setup-funcs
+#| include: false
+
+
+
+fs::dir_ls("R", glob = "*.R") |> purrr::walk(source)
+
+if (SHOW_SETUP_LOG) flog.info("📄 사용자 정의 함수 로드 완료")
+```
+
+```{r}
+#| label: setup-paths
+#| include: false
+
+
+data_dir   <- "data"
+output_dir <- "outputs"
+
+if (SHOW_SETUP_LOG) {
+  flog.info("📁 데이터 경로: %s", data_dir)
+  flog.info("📂 출력 경로: %s", output_dir)
+}
+```
+
+```{r}
+#| label: setup-seed
+#| include: false
+
+
+set.seed(2025)
+
+if (SHOW_SETUP_LOG) flog.info("🎲 Seed 설정 완료: 2025")
+```
+
+```{r}
+#| label: setup-env
+#| include: false
+
+# 환경 변수 예시 (API 키 등)
+# Sys.setenv(MY_API_KEY = "your-key-here")
+```
+
+```{r the-end}
+
+
+```

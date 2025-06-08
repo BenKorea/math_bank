@@ -1,0 +1,18 @@
+# pyproject.toml
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mathbank"
+version = "0.1.0"
+description = "중학교 수학문제 자동 변환 및 관리 시스템"
+authors = [{ name = "사용자이름" }]
+requires-python = ">=3.8"
+dependencies = [
+    "pyyaml",
+    # 여기에 필요한 패키지 추가
+]
+
+[tool.setuptools.packages.find]
+where = ["modules"]

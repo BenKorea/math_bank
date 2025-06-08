@@ -1,0 +1,7 @@
+iniconfig==2.1.0
+-e git+ssh://git@github.com/BenKorea/R-Python_Template.git@105c76411cd2a2d5aa283da7c32f5e881caf248d#egg=mathbank
+packaging==25.0
+pluggy==1.6.0
+Pygments==2.19.1
+pytest==8.4.0
+PyYAML==6.0.2
