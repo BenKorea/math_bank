@@ -48,13 +48,18 @@ def create_thread() -> str:
 
 def add_image_message(thread_id: str, image_path: Path, prompt: str) -> None:
     with open(image_path, "rb") as f:
-        logger.info(f"📩 이미지 추가: {image_path.name}")
-        openai.beta.threads.messages.create(
-            thread_id=thread_id,
-            role="user",
-            content=prompt,
-            file=f
-        )
+        logger.info(f"📤 이미지 업로드: {image_path.name}")
+        uploaded_file = openai.files.create(file=f, purpose="assistants")
+        file_id = uploaded_file.id
+
+    logger.info(f"📩 메시지 전송 중 (file_id: {file_id})")
+    openai.beta.threads.messages.create(
+        thread_id=thread_id,
+        role="user",
+        content=prompt,
+        file_ids=[file_id]  # ✅ 수정 포인트
+    )
+
 
 def run_and_get_response(thread_id: str, assistant_id: str, poll_interval=2) -> str:
     run = openai.beta.threads.runs.create(
